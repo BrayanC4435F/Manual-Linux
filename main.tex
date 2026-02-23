@@ -1,0 +1,677 @@
+\documentclass[12pt,a4paper]{article}
+
+% ---------------- PAQUETES ----------------
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{longtable}
+
+\geometry{margin=2.5cm}
+
+% ---------------- CONFIGURACION CODIGO ----------------
+\definecolor{codegray}{gray}{0.95}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codeblue}{rgb}{0,0,0.8}
+
+\lstset{
+    backgroundcolor=\color{codegray},
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{codeblue},
+    commentstyle=\color{codegreen},
+    breaklines=true,
+    frame=single
+}
+
+% ---------------- DOCUMENTO ----------------
+\begin{document}
+
+\begin{titlepage}
+\centering
+{\Large Universidad Mayor de San Andrés \\}
+\vspace{0.5cm}
+{\large Facultad de Ciencias Puras y Naturales \\}
+\vspace{1cm}
+{\Huge \textbf{Guía Maestra de Administración y Scripting en Linux} \\}
+\vspace{1.5cm}
+\textbf{Estudiante:} Andres Brayan Goyzueta Beltran\\ 
+\textbf{Materia:} Programación \\ 
+\textbf{Docente:} Brigida Carvajal Blanco \\ 
+\textbf{Fecha:"23-2-2026} \today
+\vfill
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% ==========================================================
+\section{Comandos Básicos}
+ls,
+cd,
+pwd,
+mkdir,
+cp,
+mv,
+rm,
+touch,
+cat,
+man,
+help.
+\subsection{Gestión de Directorios}
+
+\subsubsection{ls}
+El comando ls permite listar el contenido de un directorio, mostrando archivos y subdirectorios.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+ls
+\end{lstlisting}
+
+Muestra los archivos del directorio actual.
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+ls -l
+\end{lstlisting}
+
+Muestra los archivos con información detallada como permisos, propietario y tamaño.
+
+\textbf{Ejemplo 3:}
+\begin{lstlisting}
+ls -a
+\end{lstlisting}
+
+Muestra archivos ocultos.
+
+
+\subsubsection{cd}
+El comando cd permite cambiar de directorio dentro del sistema de archivos.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+cd Documentos
+\end{lstlisting}
+
+Accede al directorio llamado Documentos.
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+cd ..
+\end{lstlisting}
+
+Retrocede al directorio padre.
+
+\textbf{Ejemplo 3:}
+\begin{lstlisting}
+cd /
+\end{lstlisting}
+
+Se mueve al directorio raíz del sistema.
+\subsubsection{pwd}
+Muestra la ruta absoluta del directorio actual en el que se encuentra el usuario.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+pwd
+\end{lstlisting}
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+pwd > ubicacion.txt
+\end{lstlisting}
+
+\subsubsection{mkdir}
+Permite crear uno o varios directorios.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+mkdir proyecto
+\end{lstlisting}
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+mkdir -p proyectos/2025/info
+\end{lstlisting}
+
+\subsubsection{cp}
+Copia archivos o directorios.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+cp archivo.txt copia.txt
+\end{lstlisting}
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+cp -r carpeta respaldo
+\end{lstlisting}
+
+\subsubsection{mv}
+Mueve o renombra archivos.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+mv archivo.txt nuevo.txt
+\end{lstlisting}
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+mv archivo.txt Documentos/
+\end{lstlisting}
+
+\subsubsection{rm}
+Elimina archivos o directorios.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+rm archivo.txt
+\end{lstlisting}
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+rm -r carpeta
+\end{lstlisting}
+
+\subsubsection{touch}
+Crea archivos vacíos o actualiza su fecha de modificación.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+touch nuevo.txt
+\end{lstlisting}
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+touch archivo1.txt archivo2.txt
+\end{lstlisting}
+
+\subsubsection{cat}
+Muestra el contenido de un archivo en la terminal.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+cat archivo.txt
+\end{lstlisting}
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+cat archivo1.txt archivo2.txt
+\end{lstlisting}
+
+\subsubsection{man}
+Muestra el manual de un comando.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+man ls
+\end{lstlisting}
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+man chmod
+\end{lstlisting}
+
+\subsubsection{help}
+Muestra ayuda interna de comandos integrados en Bash.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+help cd
+\end{lstlisting}
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+help echo
+\end{lstlisting}
+
+% ==========================================================
+\section{Comandos Avanzados}
+
+\subsection{Permisos y Propietarios}
+
+\subsubsection{chmod}
+El comando chmod permite cambiar los permisos de lectura (r), escritura (w) y ejecución (x) de un archivo o directorio.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+chmod 755 script.sh
+\end{lstlisting}
+Asigna permisos rwxr-xr-x al archivo.
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+chmod +x script.sh
+\end{lstlisting}
+Agrega permiso de ejecución al archivo.
+
+
+\subsubsection{chown}
+Permite cambiar el propietario de un archivo o directorio.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+sudo chown usuario archivo.txt
+\end{lstlisting}
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+sudo chown usuario:grupo archivo.txt
+\end{lstlisting}
+
+
+\subsection{Filtros y Procesamiento de Texto}
+
+\subsubsection{grep}
+Busca patrones de texto dentro de archivos.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+grep "error" archivo.log
+\end{lstlisting}
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+grep -i "usuario" archivo.txt
+\end{lstlisting}
+
+
+\subsubsection{find}
+Busca archivos dentro del sistema de archivos.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+find . -name "archivo.txt"
+\end{lstlisting}
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+find /home -type f
+\end{lstlisting}
+
+
+\subsubsection{head}
+Muestra las primeras líneas de un archivo.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+head archivo.txt
+\end{lstlisting}
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+head -n 5 archivo.txt
+\end{lstlisting}
+
+
+\subsubsection{tail}
+Muestra las últimas líneas de un archivo.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+tail archivo.txt
+\end{lstlisting}
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+tail -f archivo.log
+\end{lstlisting}
+
+
+\subsubsection{sort}
+Ordena líneas de texto.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+sort archivo.txt
+\end{lstlisting}
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+sort -r archivo.txt
+\end{lstlisting}
+
+
+\subsubsection{wc}
+Cuenta líneas, palabras y caracteres.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+wc archivo.txt
+\end{lstlisting}
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+wc -l archivo.txt
+\end{lstlisting}
+
+
+\subsection{Procesos del Sistema}
+
+\subsubsection{top}
+Muestra procesos en tiempo real y consumo de recursos.
+
+\textbf{Ejemplo:}
+\begin{lstlisting}
+top
+\end{lstlisting}
+
+
+\subsubsection{ps}
+Muestra procesos en ejecución.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+ps
+\end{lstlisting}
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+ps aux
+\end{lstlisting}
+
+
+\subsubsection{kill}
+Finaliza un proceso mediante su PID.
+
+\textbf{Ejemplo 1:}
+\begin{lstlisting}
+kill 1234
+\end{lstlisting}
+
+\textbf{Ejemplo 2:}
+\begin{lstlisting}
+kill -9 1234
+\end{lstlisting}
+
+% ==========================================================
+\section{Programación Shell}
+
+La programación Shell permite automatizar tareas administrativas mediante scripts ejecutados en la terminal.
+
+\subsection{Estructura Básica}
+
+Todo script Bash inicia con:
+
+\begin{lstlisting}
+#!/bin/bash
+\end{lstlisting}
+
+Esto indica que el intérprete será Bash.
+
+---
+
+\subsection{Variables}
+
+Las variables permiten almacenar datos temporalmente.
+
+\begin{lstlisting}
+#!/bin/bash
+nombre="Administrador"
+echo "Bienvenido $nombre"
+\end{lstlisting}
+
+---
+
+\subsection{Estructura Condicional (if)}
+
+Permite ejecutar código según una condición.
+
+\begin{lstlisting}
+#!/bin/bash
+if [ -f archivo.txt ]; then
+    echo "El archivo existe"
+else
+    echo "El archivo no existe"
+fi
+\end{lstlisting}
+
+Este ejemplo verifica si un archivo existe en el sistema.
+
+---
+
+\subsection{Bucle for}
+
+Permite repetir acciones sobre un conjunto de elementos.
+
+\begin{lstlisting}
+#!/bin/bash
+for archivo in *.txt
+do
+    echo "Procesando $archivo"
+done
+\end{lstlisting}
+
+Itera sobre todos los archivos .txt del directorio.
+
+---
+
+\subsection{Bucle while}
+
+Ejecuta un bloque mientras la condición sea verdadera.
+
+\begin{lstlisting}
+#!/bin/bash
+contador=1
+while [ $contador -le 5 ]
+do
+    echo "Numero $contador"
+    contador=$((contador+1))
+done
+\end{lstlisting}
+
+---
+
+\subsection{Estructura case}
+
+Permite seleccionar opciones según el valor de una variable.
+
+\begin{lstlisting}
+#!/bin/bash
+echo "Seleccione una opcion:"
+echo "1) Ver usuarios"
+echo "2) Ver fecha"
+
+read opcion
+
+case $opcion in
+1)
+    who
+    ;;
+2)
+    date
+    ;;
+*)
+    echo "Opcion invalida"
+    ;;
+esac
+\end{lstlisting}
+
+---
+
+\subsection{Script Administrativo Completo}
+
+Ejemplo de script que realiza respaldo automático de archivos:
+
+\begin{lstlisting}
+#!/bin/bash
+
+origen="/home/usuario/documentos"
+destino="/home/usuario/respaldo"
+
+if [ -d "$origen" ]; then
+    cp -r $origen $destino
+    echo "Respaldo realizado correctamente"
+else
+    echo "El directorio origen no existe"
+fi
+\end{lstlisting}
+
+Este script verifica si existe un directorio y realiza una copia de seguridad.
+
+% ==========================================================
+\section{Errores Comunes del Sistema}
+
+Durante la administración y ejecución de comandos en Linux pueden presentarse diversos errores. A continuación se detallan algunos de los más comunes, su causa y solución.
+
+\subsection{Permission Denied}
+
+\textbf{Mensaje:}
+\begin{lstlisting}
+bash: ./script.sh: Permission denied
+\end{lstlisting}
+
+\textbf{Causa:}  
+El usuario no tiene permisos de ejecución o acceso al archivo.
+
+\textbf{Solución:}
+\begin{lstlisting}
+chmod +x script.sh
+\end{lstlisting}
+o bien ejecutar con privilegios:
+\begin{lstlisting}
+sudo ./script.sh
+\end{lstlisting}
+
+
+\subsection{Command Not Found}
+
+\textbf{Mensaje:}
+\begin{lstlisting}
+bash: comando: command not found
+\end{lstlisting}
+
+\textbf{Causa:}  
+El comando no está instalado o fue escrito incorrectamente.
+
+\textbf{Solución:}
+Verificar ortografía o instalar el paquete correspondiente.
+
+
+\subsection{No Such File or Directory}
+
+\textbf{Mensaje:}
+\begin{lstlisting}
+bash: archivo.txt: No such file or directory
+\end{lstlisting}
+
+\textbf{Causa:}  
+El archivo o directorio no existe en la ruta especificada.
+
+\textbf{Solución:}
+Verificar la ruta con:
+\begin{lstlisting}
+ls
+\end{lstlisting}
+
+
+\subsection{Syntax Error}
+
+\textbf{Mensaje:}
+\begin{lstlisting}
+syntax error near unexpected token
+\end{lstlisting}
+
+\textbf{Causa:}  
+Error en la estructura del script, como falta de fi, done o esac.
+
+\textbf{Solución:}
+Revisar la sintaxis del script cuidadosamente.
+
+
+\subsection{File Exists}
+
+\textbf{Mensaje:}
+\begin{lstlisting}
+mkdir: cannot create directory 'proyecto': File exists
+\end{lstlisting}
+
+\textbf{Causa:}  
+El directorio ya fue creado anteriormente.
+
+\textbf{Solución:}
+Utilizar:
+\begin{lstlisting}
+mkdir -p proyecto
+\end{lstlisting}
+
+% ==========================================================
+\section{Tuberías y Redireccionamiento}
+
+Las tuberías permiten conectar la salida estándar de un comando con la entrada de otro comando utilizando el símbolo |. 
+Esto permite encadenar procesos y automatizar tareas administrativas.
+
+\subsection{Uso de Pipe ( | )}
+
+\textbf{Ejemplo 1: Filtrar archivos específicos}
+\begin{lstlisting}
+ls -l | grep ".txt"
+\end{lstlisting}
+Lista archivos detalladamente y filtra solo los que contienen ".txt".
+
+\textbf{Ejemplo 2: Contar procesos activos}
+\begin{lstlisting}
+ps aux | wc -l
+\end{lstlisting}
+Cuenta el número total de procesos activos en el sistema.
+
+\textbf{Ejemplo 3: Buscar usuarios conectados}
+\begin{lstlisting}
+who | sort
+\end{lstlisting}
+Muestra usuarios conectados ordenados alfabéticamente.
+
+
+\subsection{Redireccionamiento de Salida ($>$ y $>>$)}
+
+\textbf{Ejemplo 1: Crear archivo con salida}
+\begin{lstlisting}
+ls > lista.txt
+\end{lstlisting}
+Guarda la salida del comando en un archivo nuevo.
+
+\textbf{Ejemplo 2: Agregar información}
+\begin{lstlisting}
+echo "Nuevo registro" >> lista.txt
+\end{lstlisting}
+Agrega información sin borrar el contenido anterior.
+
+
+\subsection{Redireccionamiento de Entrada ($<$)}
+
+\textbf{Ejemplo:}
+\begin{lstlisting}
+wc -l < lista.txt
+\end{lstlisting}
+Cuenta las líneas del archivo usando redireccionamiento de entrada.
+
+% ==========================================================
+\section{Transparencia en el Uso de Inteligencia Artificial}
+
+Para la elaboración de este manual se utilizó la herramienta ChatGPT como apoyo estructural y de redacción técnica. 
+El estudiante comprendió y revisó cada sección antes de su inclusión en el documento final.
+
+\begin{longtable}{|p{3cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{IA Utilizada} & \textbf{Prompt Enviado} & \textbf{Parte Generada} \\ \hline
+
+ChatGPT & Generar estructura base en formato LaTeX para manual de Linux & Plantilla inicial del documento \\ \hline
+
+ChatGPT & Generar ejemplos de comandos básicos con explicación & Sección de comandos básicos \\ \hline
+
+ChatGPT & Generar comandos avanzados y ejemplos técnicos & Sección de comandos avanzados \\ \hline
+
+ChatGPT & Explicar estructuras de programación Shell con ejemplos administrativos & Sección de programación Shell \\ \hline
+
+ChatGPT & Listar errores comunes del sistema y su solución & Sección de errores comunes \\ \hline
+
+ChatGPT & Explicar uso de tuberías y redireccionamiento & Sección de tuberías \\ \hline
+
+\end{longtable}
+
+\textbf{Nota:} La herramienta fue utilizada como apoyo académico, manteniendo comprensión total del contenido presentado.
+
+\end{document}
